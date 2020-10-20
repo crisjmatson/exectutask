@@ -15,7 +15,7 @@ const UserSidebar = (props) => {
 	return (
 		<div className="usersidebarcontainer">
 			<Nav color="faded" light>
-				<NavbarBrand href="/" className="mr-auto">
+				{/* <NavbarBrand href="/" className="mr-auto">
 					<Link to="/" onClick={() => setCollapsed(true)}>
 						<img
 							src="https://user-images.githubusercontent.com/68344211/93353776-4f2e0980-f80a-11ea-9f15-d3cdf44cccc5.png"
@@ -23,7 +23,7 @@ const UserSidebar = (props) => {
 							className="navbar-everest-logo"
 						/>
 					</Link>
-				</NavbarBrand>
+				</NavbarBrand> */}
 				<NavItem className="usersidebarNavItem">
 					<Button>
 						<Link
