@@ -1,0 +1,16 @@
+.delete-submodal-div {
+	display: flexbox;
+	align-content: center;
+}
+.user-nav-button:hover {
+	color: #ff7a59;
+	border: #ff7a59 solid 1px;
+	background: #fff;
+	text-align: center;
+}
+.user-nav-button {
+	align-self: center;
+}
+.delete-submodal-text {
+	text-align: center;
+}

@@ -1,0 +1,47 @@
+.App {
+	font-family: "Raleway", sans-serif;
+}
+.pageaccess-container {
+	background-color: #f1f0f0bb;
+	height: 100%;
+}
+.auth-container {
+	background-image: url("https://user-images.githubusercontent.com/68344211/93353785-5228fa00-f80a-11ea-9306-ded2c6ca2c0a.png");
+	background-size: cover;
+	height: 100vh;
+}
+
+.App-logo {
+	height: 40vmin;
+	pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
+}
+
+.App-header {
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
+}
+
+.App-link {
+	color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}

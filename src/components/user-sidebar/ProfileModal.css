@@ -1,0 +1,14 @@
+.viewprofile-opentopmodal-button {
+	height: 90px;
+	margin-left: 30px;
+}
+.viewprofile-opentopmodal-button:hover {
+	color: transparent;
+	border: 10px solid white;
+	border-radius: 50%;
+	background: #fff;
+}
+.viewprofile-opentopmodal-button:focus {
+	color: transparent;
+	border: 10px solid transparent;
+}

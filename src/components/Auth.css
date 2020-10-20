@@ -1,0 +1,41 @@
+Button {
+	font-family: "Kumbh Sans", sans-serif;
+}
+Form {
+	color: whitesmoke;
+}
+.auth-outer-div {
+	padding: 15px;
+	text-align: center;
+}
+.auth-main-div {
+	background-color: #21292fd7;
+	color: #9bb4c5;
+}
+.auth-form-div {
+	padding: 10%;
+}
+.auth-formtext {
+	color: #bad2e4;
+	font-size: smaller;
+}
+.auth-landing-logo {
+	width: 100%;
+	padding-top: 20vh;
+}
+.auth-enter-button {
+	width: 30%;
+	padding: 5px;
+	position: relative;
+	margin-top: 5%;
+	background-color: #5d7484;
+	color: #213847;
+	font-weight: 900;
+}
+.auth-btn-signup {
+	background-color: #445561;
+	color: #bad2e4;
+}
+.auth-access-denied {
+	color: goldenrod;
+}

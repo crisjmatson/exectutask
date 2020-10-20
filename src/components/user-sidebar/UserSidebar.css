@@ -1,0 +1,28 @@
+.list-sidebar-user-nav {
+	background-color: #21292f8c;
+	padding: -50px;
+}
+.usersidebarcontainer {
+	text-align: center;
+}
+.navbar-everest-logo {
+	height: 50px;
+}
+.user-logout-img {
+	height: 90px;
+	margin-left: 30px;
+}
+.user-logout-img:hover {
+	color: transparent;
+	border: transparent solid 10px;
+	border-radius: 50%;
+	background: #fff;
+}
+.usersidebarNavItem {
+	color: whitesmoke;
+	padding: 10px;
+	border-radius: 5%;
+}
+a {
+	color: whitesmoke;
+}
