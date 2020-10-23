@@ -1,18 +1,46 @@
 import React from "react";
 import { Formik } from "formik";
 import { Button, Form, Input, FormGroup, Label, Container } from "reactstrap";
+import APIURL from "../../helpers/environment";
 
-function Create() {
+function Create(props) {
+	function valueSelect(values) {
+		//{title: "", description: "", time_est: "", due: "2020-07-07T12:09"}
+		//console.log(values.title);
+		for (var propName in values) {
+			if (values[propName] === "") {
+				delete values[propName];
+			}
+		}
+		createTask(values);
+	}
+	function createTask(task) {
+		fetch(`${APIURL}/task`, {
+			method: "POST",
+			headers: new Headers({
+				"Content-Type": "application/json",
+				Authorization: props.sessionToken,
+			}),
+			body: JSON.stringify({ task }),
+		}).then((response) => {
+			if (response.ok) {
+				props.fetchTasks();
+				props.createToggle();
+			} else alert("post not updated");
+		});
+	}
+
 	return (
 		<Container>
 			<Formik
 				initialValues={{
 					title: "",
 					description: "",
-					time_est: null,
-					due: null,
+					time_est: "",
+					due: "",
 				}}
 				onSubmit={(values, actions) => {
+					valueSelect(values);
 					setTimeout(() => {
 						alert(JSON.stringify(values, null, 2));
 						actions.setSubmitting(false);
@@ -52,6 +80,7 @@ function Create() {
 							</Label>
 							<Input
 								type="number"
+								min="0"
 								name="time_est"
 								id="create-time_est"
 								placeholder="task time_est"
@@ -65,6 +94,7 @@ function Create() {
 							<Input
 								type="datetime-local"
 								name="due"
+								min={new Date()}
 								id="create-due"
 								placeholder="task due"
 								onChange={props.handleChange}
@@ -78,6 +108,8 @@ function Create() {
 					</Form>
 				)}
 			</Formik>
+			<br />
+			<Button onClick={() => props.createToggle()}>Cancel</Button>
 		</Container>
 	);
 }

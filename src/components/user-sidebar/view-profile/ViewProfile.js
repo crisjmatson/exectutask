@@ -61,28 +61,24 @@ const ViewProfile = (props) => {
 				inverse
 				style={{ backgroundColor: "#21292f8c", borderColor: "#21292f8c" }}
 			>
-				<CardText>
-					<ListGroup>
-						<ListGroupItemHeading className="viewProfileItemHeading">
-							username:
-						</ListGroupItemHeading>
-						<p id="username" className="viewProfileItemText"></p>
-						<ListGroupItemHeading className="viewProfileItemHeading">
-							email
-						</ListGroupItemHeading>
-						<p id="email" className="viewProfileItemText"></p>
-						<ListGroupItemHeading className="viewProfileItemHeading">
-							date joined
-						</ListGroupItemHeading>
-						<p id="dateJoined" className="viewProfileItemText"></p>
-						<ListGroupItemHeading className="viewProfileItemHeading">
-							tasks completed to date
-						</ListGroupItemHeading>
-						<p id="count" className="viewProfileItemText">
-							tasks completed
-						</p>
-					</ListGroup>
-				</CardText>
+				<ListGroup>
+					<span className="viewProfileItemHeading">username:</span>
+					<span id="username" className="viewProfileItemText"></span>
+					<br />
+					<span className="viewProfileItemHeading">email</span>
+					<span id="email" className="viewProfileItemText"></span>
+					<br />
+					<span className="viewProfileItemHeading">date joined</span>
+					<span id="dateJoined" className="viewProfileItemText"></span>
+					<br />
+					<span className="viewProfileItemHeading">
+						tasks completed to date
+					</span>
+					<span id="count" className="viewProfileItemText">
+						tasks completed
+					</span>
+				</ListGroup>
+
 				<Button onClick={() => props.setClosedRoute(true)}>
 					close profile
 				</Button>

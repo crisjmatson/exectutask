@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Radium from "radium";
 import { Link, Redirect, Route, Switch } from "react-router-dom";
 import { Button, Nav, NavbarBrand, NavItem } from "reactstrap";
 import DeleteProfile from "./de-lete/DeleteProfile";
@@ -7,14 +8,21 @@ import Logout from "./log-out/Logout";
 import "./UserSidebar.css";
 import ViewProfile from "./view-profile/ViewProfile";
 
+var styles = {
+	sidebar: {
+		zIndex: "10",
+		position: "fixed",
+	},
+};
+
 const UserSidebar = (props) => {
 	const [collapsed, setCollapsed] = useState(true);
 	const [closedRoute, setClosedRoute] = useState(false);
 	const toggleNavbar = () => setCollapsed(!collapsed);
 
 	return (
-		<div className="usersidebarcontainer">
-			<Nav color="faded" light>
+		<div className="usersidebarcontainer" style={styles.sidebar}>
+			<Nav color="faded">
 				{/* <NavbarBrand href="/" className="mr-auto">
 					<Link to="/" onClick={() => setCollapsed(true)}>
 						<img
@@ -141,4 +149,4 @@ function Home() {
 	return <h2></h2>;
 }
 
-export default UserSidebar;
+export default Radium(UserSidebar);

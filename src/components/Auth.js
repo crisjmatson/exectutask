@@ -85,7 +85,10 @@ const Auth = (props) => {
 			body: JSON.stringify(userSubmission),
 		})
 			.then((response) => response.json())
-			.then((json) => props.setSessionToken(json.sessionToken));
+			.then((json) => {
+				console.log(json.sessionToken);
+				props.setSessionToken(json.sessionToken);
+			});
 	};
 
 	const signupFetch = async () => {

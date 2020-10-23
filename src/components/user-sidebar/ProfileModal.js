@@ -4,7 +4,12 @@ import APIURL from "../../helpers/environment";
 import "./ProfileModal.css";
 import DeleteProfile from "./de-lete/DeleteProfile";
 import EditProfile from "./edit/EditProfile";
-import ViewProfile from "./view-profile/ViewProfile";
+import ViewProfile from "./view-profile/ViewProfile";import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 const ProfileModal = (props) => {
 	const [showProfile, setShowProfile] = useState(false);
