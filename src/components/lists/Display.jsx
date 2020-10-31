@@ -34,7 +34,6 @@ const Display = (props) => {
 		setShowCreate(!showCreate);
 	};
 	function updateCompletion(id, status) {
-		console.log(id, status);
 		if (status === false) {
 			let updateTask = {
 				task: {
@@ -71,7 +70,7 @@ const Display = (props) => {
 			body: JSON.stringify(update),
 		}).then((response) => {
 			if (response.ok) {
-				props.sidebarFetch().then(() => console.log(props.profile));
+				props.sidebarFetch();
 			} else alert("user task count not updated", response);
 		});
 	}

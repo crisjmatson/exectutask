@@ -13,7 +13,6 @@ function Create(props) {
 		createTask(values);
 	}
 	function createTask(task) {
-		console.log(task);
 		fetch(`${APIURL}/task`, {
 			method: "POST",
 			headers: new Headers({

@@ -35,7 +35,6 @@ const Auth = (props) => {
 		e.preventDefault();
 		if (signUp) {
 			//regexVerification();
-			console.log("sign up selected");
 			signupFetch();
 		} else {
 			//console.log(userBody);
