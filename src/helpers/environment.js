@@ -5,6 +5,6 @@ switch (window.location.hostname) {
 		APIURL = "http://localhost:3000";
 		break;
 	case "executask.herokuapp.com":
-		APIURL = "https://bg-executask.herokuapp.com";
+		APIURL = "https://execuserver.herokuapp.com";
 }
 export default APIURL;
