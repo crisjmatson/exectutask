@@ -4,12 +4,8 @@ import APIURL from "../../helpers/environment";
 import "./ProfileModal.css";
 import DeleteProfile from "./de-lete/DeleteProfile";
 import EditProfile from "./edit/EditProfile";
-import ViewProfile from "./view-profile/ViewProfile";import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import ViewProfile from "./view-profile/ViewProfile";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const ProfileModal = (props) => {
 	const [showProfile, setShowProfile] = useState(false);
@@ -36,7 +32,10 @@ const ProfileModal = (props) => {
 		setUser(please);
 	};
 
-	const toggle = () => setModal(true);
+	const toggle = () => {
+		let current = modal;
+		setModal(!current);
+	};
 
 	const submitProfileEdit = () => {
 		console.log("profile edit submit");
@@ -44,7 +43,7 @@ const ProfileModal = (props) => {
 
 	return (
 		<div>
-			<div>
+			{/* <div>
 				<input
 					className="viewprofile-opentopmodal-button"
 					type="image"
@@ -55,9 +54,8 @@ const ProfileModal = (props) => {
 						toggle();
 					}}
 				/>
-			</div>
+			</div> */}
 			<Modal isOpen={modal} toggle={toggle}>
-				<ModalHeader toggle={toggle}>profile</ModalHeader>
 				<div>
 					<Switch>
 						<Route exact path="/viewprofile">
@@ -88,76 +86,10 @@ const ProfileModal = (props) => {
 					</Switch>
 				</div>
 				<hr />
-				{/* <ListGroup flush className="profileDisplayList">
-						<ListGroupItem>
-							<ListGroupItemHeading>username</ListGroupItemHeading>
-							<ListGroupItemText id="username"></ListGroupItemText>
-						</ListGroupItem>
-						<ListGroupItem>
-							<ListGroupItemHeading>date joined</ListGroupItemHeading>
-							<ListGroupItemText id="dateJoined"></ListGroupItemText>
-						</ListGroupItem>
-						<ListGroupItem>
-							<ListGroupItemHeading>email</ListGroupItemHeading>
-							<ListGroupItemText id="email"></ListGroupItemText>
-						</ListGroupItem>
-						<ListGroupItem>
-							<ListGroupItemHeading>tasks completed</ListGroupItemHeading>
-							<ListGroupItemText id="tasksDone"></ListGroupItemText>
-						</ListGroupItem>
-					</ListGroup> */}
-				{/* EDIT PROFILE SUB-MODAL */}
-				{/* <Modal
-						isOpen={nestedModal}
-						toggle={toggleNested}
-						onClosed={closeAll ? toggle : undefined}
-					>
-						<ModalHeader>edit: options</ModalHeader>
-						<ModalBody>
-							<EditProfile
-								sessionToken={props.sessionToken}
-								usernameEdit={user.username}
-								emailEdit={user.email}
-								passwordEdit={user.password}
-								/* username={username}
-								email={email}
-								password={password} 
-							/>
-						</ModalBody>
-						<ModalFooter>
-							<Button color="primary" onClick={submitProfileEdit}>
-								submit
-							</Button>
-							<Button color="secondary" onClick={toggleNested}>
-								cancel
-							</Button>
-						</ModalFooter>
-					</Modal> */}
-				{/* DELETE SUB-MODAL */}
-				{/* <Modal
-						isOpen={nestedDeleteModal}
-						toggle={toggleNestedDelete}
-						onClosed={closeAll ? toggle : undefined}
-					>
-						<ModalHeader>delete account?</ModalHeader>
-						<ModalBody>
-							<DeleteProfile
-								sessionToken={props.sessionToken}
-								setSessionToken={props.setSessionToken}
-							/>
-						</ModalBody>
-						<ModalFooter>
-							<Button color="secondary" onClick={toggleNestedDelete}>
-								cancel
-							</Button>
-						</ModalFooter>
-					</Modal>
-				</ModalBody> */}
-
 				{/* MAIN MODAL BUTTONS- SUB MODAL ACCESS*/}
 				<ModalFooter>
 					<ul>
-						<Button color="secondary">
+						<Button color="primary" onClick={() => alert("heckkkk")}>
 							<li>
 								<Link to="/">view profile</Link>
 							</li>
@@ -182,4 +114,4 @@ const ProfileModal = (props) => {
 	);
 };
 
-export default ProfileModal;
+//export default ProfileModal;

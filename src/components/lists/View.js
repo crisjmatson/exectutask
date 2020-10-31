@@ -37,11 +37,6 @@ const View = (props) => {
 					return a.complete - b.complete;
 				});
 				return finalSort;
-				/* for (i = 0; i < sorted.length; i++) {
-					if (sorted[i].complete) {
-						sorted.splice(i, 1);
-					}
-				} */
 			})
 			.then((tasks) => {
 				props.setTasks(tasks);
@@ -50,14 +45,15 @@ const View = (props) => {
 
 	return (
 		<Container style={styles.view}>
-			<h1>ALL tasks:</h1>
 			<Display
 				tasks={props.tasks}
 				sessionToken={props.sessionToken}
 				fetchTasks={fetchTasks}
+				sidebarFetch={props.sidebarFetch}
+				profile={props.profile}
 			/>
 		</Container>
 	);
 };
 
-export default View;
+export default Radium(View);

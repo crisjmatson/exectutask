@@ -12,8 +12,6 @@ import APIURL from "../../../helpers/environment";
 import "./EditProfile.css";
 
 const EditProfile = (props) => {
-	//let backToProfile = props.backToProfile;
-	//let setBackToProfile = props.setBackToProfile;
 	const [newEmail, setNewEmail] = useState();
 	const [newName, setNewName] = useState();
 	const [editSelect, setEditSelect] = useState(); //selects edit name
@@ -51,6 +49,8 @@ const EditProfile = (props) => {
 		let update = await response.json();
 		if (update[0] === 1) {
 			alert(`user ${editSelect} updated.`);
+			props.sidebarFetch();
+			// !! Then redirect to closed nav bar.
 		}
 	};
 

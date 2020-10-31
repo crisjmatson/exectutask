@@ -219,14 +219,15 @@ const Auth = (props) => {
 					</div>
 				</div>
 			) : (
-				<div>
-					<img
+				<div className="auth-landing-logo">
+					{/* <img
 						className="auth-landing-logo"
 						src="https://user-images.githubusercontent.com/68344211/93353776-4f2e0980-f80a-11ea-9f15-d3cdf44cccc5.png"
 						alt="EVEREST logo"
-					/>
+					/> */}
+					<h1 className="auth-logotext">Executask</h1>
 					<Button className="auth-enter-button" onClick={(e) => authClick(e)}>
-						log in
+						LOG IN
 					</Button>
 				</div>
 			)}

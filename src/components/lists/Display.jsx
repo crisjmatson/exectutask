@@ -6,11 +6,10 @@ import {
 	ListGroupItemHeading,
 	ListGroupItemText,
 	Badge,
-	Input,
 	Button,
 } from "reactstrap";
 import APIURL from "../../helpers/environment";
-import { FiPenTool } from "react-icons/fi";
+import { FiCheckCircle, FiPenTool, FiXCircle } from "react-icons/fi";
 import Create from "./Create";
 
 var styles = {
@@ -21,6 +20,12 @@ var styles = {
 		width: "auto",
 		height: "100px",
 	},
+	deleteTaskButton: {
+		padding: 0,
+	},
+	timeBadge: {
+		padding: 13,
+	},
 };
 
 const Display = (props) => {
@@ -29,22 +34,45 @@ const Display = (props) => {
 		setShowCreate(!showCreate);
 	};
 	function updateCompletion(id, status) {
-		let updateTask = {
-			task: {
-				complete: !status,
+		console.log(id, status);
+		if (status === false) {
+			let updateTask = {
+				task: {
+					complete: !status,
+				},
+			};
+			fetch(`${APIURL}/task/update/${id}`, {
+				method: "PUT",
+				headers: new Headers({
+					"Content-Type": "application/json",
+					Authorization: props.sessionToken,
+				}),
+				body: JSON.stringify(updateTask),
+			}).then((response) => {
+				if (response.ok) {
+					props.fetchTasks();
+					updateUserTaskCount();
+				} else alert("task not updated");
+			});
+		}
+	}
+	function updateUserTaskCount() {
+		let update = {
+			user: {
+				count: props.profile.taskCount + 1,
 			},
 		};
-		fetch(`${APIURL}/task/update/${id}`, {
+		fetch(`${APIURL}/user/edit`, {
 			method: "PUT",
 			headers: new Headers({
 				"Content-Type": "application/json",
 				Authorization: props.sessionToken,
 			}),
-			body: JSON.stringify(updateTask),
+			body: JSON.stringify(update),
 		}).then((response) => {
 			if (response.ok) {
-				props.fetchTasks();
-			} else alert("task not updated");
+				props.sidebarFetch().then(() => console.log(props.profile));
+			} else alert("user task count not updated", response);
 		});
 	}
 	function deleteTask(id) {
@@ -84,25 +112,47 @@ const Display = (props) => {
 				{props.tasks.map((task) => {
 					return (
 						<ListGroupItem key={task.id} active={task.complete}>
-							<ListGroupItemHeading>
-								{task.title}
-								{"     			"}
-								<Badge href="#" color="secondary">
-									{task.time_estimate}
-								</Badge>
-							</ListGroupItemHeading>
+							{task.complete ? (
+								<strike>
+									<ListGroupItemHeading>
+										{task.title}
+										{"     			"}
+									</ListGroupItemHeading>
+								</strike>
+							) : (
+								<ListGroupItemHeading>
+									{task.title}
+									{"     			"}
+								</ListGroupItemHeading>
+							)}
 							<ListGroupItemText>
 								{task.description}
-								{" ---- 		"}
-								<Input
-									type="checkbox"
-									name="completeTask"
-									checked={task.complete}
-									onChange={() => updateCompletion(task.id, task.complete)}
-								/>
+								<br />
+								{task.due !== null ? (
+									<span>due: {task.due}</span>
+								) : (
+									<span></span>
+								)}
 							</ListGroupItemText>
 							<ListGroupItemText>
-								<Button onClick={() => deleteTask(task.id)}>XXX</Button>
+								<Badge style={styles.timeBadge} href="#" color="secondary">
+									{task.time_estimate}
+								</Badge>
+								{"    "}
+								{task.complete ? (
+									<span></span>
+								) : (
+									<Button
+										onClick={() => updateCompletion(task.id, task.complete)}
+									>
+										{" "}
+										finished? <FiCheckCircle style={styles.deleteTaskButton} />
+									</Button>
+								)}
+								{"    "}
+								<Button onClick={() => deleteTask(task.id)}>
+									<FiXCircle style={styles.deleteTaskButton} />
+								</Button>
 							</ListGroupItemText>
 						</ListGroupItem>
 					);

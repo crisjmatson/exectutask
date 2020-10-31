@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Radium from "radium";
 import { Link, Redirect, Route, Switch } from "react-router-dom";
-import { Button, Nav, NavbarBrand, NavItem } from "reactstrap";
-import DeleteProfile from "./de-lete/DeleteProfile";
+import { Button, Nav, NavItem } from "reactstrap";
+import ViewProfile from "./view-profile/ViewProfile";
 import EditProfile from "./edit/EditProfile";
+import DeleteProfile from "./de-lete/DeleteProfile";
 import Logout from "./log-out/Logout";
 import "./UserSidebar.css";
-import ViewProfile from "./view-profile/ViewProfile";
 
 var styles = {
 	sidebar: {
@@ -18,20 +18,10 @@ var styles = {
 const UserSidebar = (props) => {
 	const [collapsed, setCollapsed] = useState(true);
 	const [closedRoute, setClosedRoute] = useState(false);
-	const toggleNavbar = () => setCollapsed(!collapsed);
 
 	return (
 		<div className="usersidebarcontainer" style={styles.sidebar}>
 			<Nav color="faded">
-				{/* <NavbarBrand href="/" className="mr-auto">
-					<Link to="/" onClick={() => setCollapsed(true)}>
-						<img
-							src="https://user-images.githubusercontent.com/68344211/93353776-4f2e0980-f80a-11ea-9f15-d3cdf44cccc5.png"
-							alt="everestLogo"
-							className="navbar-everest-logo"
-						/>
-					</Link>
-				</NavbarBrand> */}
 				<NavItem className="usersidebarNavItem">
 					<Button>
 						<Link
@@ -105,6 +95,8 @@ const UserSidebar = (props) => {
 							sessionToken={props.sessionToken}
 							setCollapsed={setCollapsed}
 							setClosedRoute={setClosedRoute}
+							profile={props.profile}
+							setProfile={props.setProfile}
 						/>
 					)}
 				</Route>
@@ -116,6 +108,7 @@ const UserSidebar = (props) => {
 							sessionToken={props.sessionToken}
 							setClosedRoute={setClosedRoute}
 							Redirect={Redirect}
+							sidebarFetch={props.sidebarFetch}
 						/>
 					)}
 				</Route>
@@ -146,7 +139,7 @@ const UserSidebar = (props) => {
 };
 
 function Home() {
-	return <h2></h2>;
+	return <div></div>;
 }
 
 export default Radium(UserSidebar);

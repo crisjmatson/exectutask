@@ -5,8 +5,6 @@ import APIURL from "../../helpers/environment";
 
 function Create(props) {
 	function valueSelect(values) {
-		//{title: "", description: "", time_est: "", due: "2020-07-07T12:09"}
-		//console.log(values.title);
 		for (var propName in values) {
 			if (values[propName] === "") {
 				delete values[propName];
@@ -15,6 +13,7 @@ function Create(props) {
 		createTask(values);
 	}
 	function createTask(task) {
+		console.log(task);
 		fetch(`${APIURL}/task`, {
 			method: "POST",
 			headers: new Headers({
@@ -26,7 +25,7 @@ function Create(props) {
 			if (response.ok) {
 				props.fetchTasks();
 				props.createToggle();
-			} else alert("post not updated");
+			} else alert("task not updated");
 		});
 	}
 
@@ -36,13 +35,13 @@ function Create(props) {
 				initialValues={{
 					title: "",
 					description: "",
-					time_est: "",
+					time_estimate: "",
 					due: "",
 				}}
 				onSubmit={(values, actions) => {
 					valueSelect(values);
 					setTimeout(() => {
-						alert(JSON.stringify(values, null, 2));
+						//alert(JSON.stringify(values, null, 2));
 						actions.setSubmitting(false);
 					}, 1000);
 				}}
@@ -75,22 +74,22 @@ function Create(props) {
 						</FormGroup>
 
 						<FormGroup>
-							<Label for="time_est">
+							<Label for="time_estimate">
 								time estimate (optional: answer in minutes)
 							</Label>
 							<Input
 								type="number"
 								min="0"
-								name="time_est"
-								id="create-time_est"
-								placeholder="task time_est"
+								name="time_estimate"
+								id="create-time_estimate"
+								placeholder="task time_estimate"
 								onChange={props.handleChange}
 								onBlur={props.handleBlur}
-								value={props.values.time_est}
+								value={props.values.time_estimate}
 							/>
 						</FormGroup>
 						<FormGroup>
-							<Label for="time_est">due date (optional)</Label>
+							<Label for="time_estimate">due date (optional)</Label>
 							<Input
 								type="datetime-local"
 								name="due"
