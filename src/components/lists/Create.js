@@ -10,9 +10,11 @@ function Create(props) {
 				delete values[propName];
 			}
 		}
+		values.complete = false;
 		createTask(values);
 	}
 	function createTask(task) {
+		//console.log({ task: { task } });
 		fetch(`${APIURL}/task`, {
 			method: "POST",
 			headers: new Headers({
@@ -21,6 +23,7 @@ function Create(props) {
 			}),
 			body: JSON.stringify({ task }),
 		}).then((response) => {
+			console.log("response in json: ", response.json());
 			if (response.ok) {
 				props.fetchTasks();
 				props.createToggle();
@@ -40,7 +43,6 @@ function Create(props) {
 				onSubmit={(values, actions) => {
 					valueSelect(values);
 					setTimeout(() => {
-						//alert(JSON.stringify(values, null, 2));
 						actions.setSubmitting(false);
 					}, 1000);
 				}}

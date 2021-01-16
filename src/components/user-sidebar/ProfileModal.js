@@ -96,7 +96,7 @@ const ProfileModal = (props) => {
 						</Button>
 						<Button color="secondary">
 							<li>
-								<Link to="/edit">edit</Link>
+								<Link to="/edit">ediiit</Link>
 							</li>
 						</Button>
 						<Button color="secondary">

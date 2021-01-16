@@ -83,7 +83,6 @@ const Display = (props) => {
 			}),
 		}).then((response) => {
 			if (response.ok) {
-				alert("task deleted");
 				props.fetchTasks();
 			} else alert("task not updated");
 		});
