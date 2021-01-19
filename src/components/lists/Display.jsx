@@ -10,6 +10,7 @@ import {
 } from "reactstrap";
 import APIURL from "../../helpers/environment";
 import { FiCheckCircle, FiPenTool, FiXCircle } from "react-icons/fi";
+import { GiCardRandom } from "react-icons/gi";
 import Create from "./Create";
 
 var styles = {
@@ -30,9 +31,15 @@ var styles = {
 
 const Display = (props) => {
 	const [showCreate, setShowCreate] = useState(false);
+	const [showRandom, setShowRandom] = useState(false);
 	const createToggle = () => {
-		setShowCreate(!showCreate);
+		let current = showCreate;
+		setShowCreate(!current);
 	};
+	const randomToggle = () => {
+		setShowRandom(!showRandom);
+	};
+
 	function updateCompletion(id, status) {
 		if (status === false) {
 			let updateTask = {
@@ -101,10 +108,16 @@ const Display = (props) => {
 							/>
 						</div>
 					) : (
-						<Button onClick={() => createToggle()}>
-							{" "}
-							<FiPenTool style={styles.createIcon} />{" "}
-						</Button>
+						<span>
+							<Button onClick={() => createToggle()}>
+								{" "}
+								<FiPenTool style={styles.createIcon} />{" "}
+							</Button>
+							{/* <Button onClick={() => randomToggle()}>
+								{" "}
+								<GiCardRandom style={styles.createIcon} />{" "}
+							</Button> */}
+						</span>
 					)}
 				</ListGroupItem>
 				{props.tasks.map((task) => {

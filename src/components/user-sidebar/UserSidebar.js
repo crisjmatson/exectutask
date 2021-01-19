@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import Radium from "radium";
 import { Link, Redirect, Route, Switch } from "react-router-dom";
 import { Button, Nav, NavItem } from "reactstrap";
+import { FaUserCircle } from "react-icons/fa";
 import useOutsideClick from "../useOutsideClick";
 import ViewProfile from "./view-profile/ViewProfile";
 import EditProfile from "./edit/EditProfile";
@@ -13,6 +14,7 @@ var styles = {
 	sidebar: {
 		zIndex: "10",
 		position: "fixed",
+		margin: "15px",
 	},
 };
 
@@ -26,6 +28,7 @@ const UserSidebar = (props) => {
 		console.log("click logged as outside");
 		if (profileBtnToggle !== true) {
 			setClosedRoute(true);
+			setCollapsed(true);
 			setProfileBtnToggle(true);
 		}
 	});
@@ -39,73 +42,68 @@ const UserSidebar = (props) => {
 		<div className="usersidebarcontainer" style={styles.sidebar} ref={ref}>
 			{profileBtnToggle ? (
 				<Button
-					style={{ borderRadius: "50%", height: "5em", width: "5em" }}
+					style={{
+						borderRadius: "50%",
+						padding: "10px",
+					}}
 					onClick={() => toggleProfileBtn()}
 				>
-					Profile
+					<FaUserCircle style={{ fontSize: "50px" }} />
 				</Button>
 			) : (
 				<div>
 					<Nav color="faded">
 						<NavItem className="usersidebarNavItem">
-							<Button>
-								<Link
-									to="/viewprofile"
-									onClick={() => {
-										if (closedRoute === true) {
-											setClosedRoute(false);
-										}
-										setCollapsed(true);
-									}}
-								>
-									view
-								</Link>
-							</Button>
+							<Link
+								to="/viewprofile"
+								onClick={() => {
+									if (closedRoute === true) {
+										setClosedRoute(false);
+									}
+									/* setCollapsed(true) */
+								}}
+							>
+								<Button> view </Button>
+							</Link>
 						</NavItem>
 						<NavItem className="usersidebarNavItem">
-							<Button>
-								<Link
-									to="/editprofile"
-									onClick={() => {
-										if (closedRoute === true) {
-											setClosedRoute(false);
-										}
-										setCollapsed(true);
-									}}
-								>
-									edit
-								</Link>
-							</Button>
+							<Link
+								to="/editprofile"
+								onClick={() => {
+									if (closedRoute === true) {
+										setClosedRoute(false);
+									}
+									/* setCollapsed(true) */
+								}}
+							>
+								<Button> edit </Button>
+							</Link>
 						</NavItem>
 						<NavItem className="usersidebarNavItem">
-							<Button>
-								<Link
-									to="/deleteprofile"
-									onClick={() => {
-										if (closedRoute === true) {
-											setClosedRoute(false);
-										}
-										setCollapsed(true);
-									}}
-								>
-									delete account
-								</Link>
-							</Button>
+							<Link
+								to="/deleteprofile"
+								onClick={() => {
+									if (closedRoute === true) {
+										setClosedRoute(false);
+									}
+									/* setCollapsed(true) */
+								}}
+							>
+								<Button>delete account</Button>
+							</Link>
 						</NavItem>
 						<NavItem className="usersidebarNavItem">
-							<Button>
-								<Link
-									to="/logout"
-									onClick={() => {
-										if (closedRoute === true) {
-											setClosedRoute(false);
-										}
-										setCollapsed(true);
-									}}
-								>
-									logout
-								</Link>
-							</Button>
+							<Link
+								to="/logout"
+								onClick={() => {
+									if (closedRoute === true) {
+										setClosedRoute(false);
+									}
+									/* setCollapsed(true) */
+								}}
+							>
+								<Button>logout</Button>
+							</Link>
 						</NavItem>
 					</Nav>
 				</div>
