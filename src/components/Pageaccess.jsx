@@ -61,7 +61,7 @@ export default function ListAccess(props) {
 		} else {
 			return setLists(userLists.lists);
 		}
-		console.log("current userLists: ", userLists);
+		//console.log("current userLists: ", userLists);
 	};
 
 	/* const getSelectedList = (listId) => {

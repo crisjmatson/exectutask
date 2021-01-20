@@ -25,7 +25,7 @@ const UserSidebar = (props) => {
 	const ref = useRef();
 
 	useOutsideClick(ref, () => {
-		console.log("click logged as outside");
+		//console.log("click logged as outside");
 		if (profileBtnToggle !== true) {
 			setClosedRoute(true);
 			setCollapsed(true);

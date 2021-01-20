@@ -29,7 +29,7 @@ const View = (props) => {
 		})
 			.then((response) => response.json())
 			.then((json) => {
-				console.log("task fetch: ", json); // ALWAYS RETURNS ERROR
+				//console.log("task fetch: ", json); 
 				let sorted = json.tasks.sort((a, b) => {
 					return a.updatedAt - b.updatedAt;
 				});

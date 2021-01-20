@@ -42,7 +42,7 @@ const View = (props) => {
 			if (props.lists[i].title === "general") {
 				props.setCurrentList(props.lists[i]);
 				getSelectedList(props.lists[i].id);
-				console.log("default list found: ", props.lists[i]);
+				//console.log("default list found: ", props.lists[i]);
 			}
 		}
 	};
@@ -67,7 +67,7 @@ const View = (props) => {
 				return finalSort;
 			})
 			.then((final) => {
-				console.log("setting current tasks as: ", final.tasks);
+				//console.log("setting current tasks as: ", final.tasks);
 				props.setTasks(final.tasks);
 			});
 		return;
@@ -95,7 +95,7 @@ const View = (props) => {
 							<Button
 								key={list.id}
 								onClick={() => {
-									console.log("set list: ", list);
+									//console.log("set list: ", list);
 									//props.setCurrentList(list);
 									getSelectedList(list.id);
 								}}

@@ -23,7 +23,7 @@ function Create(props) {
 			}),
 			body: JSON.stringify({ task }),
 		}).then((response) => {
-			console.log("response in json: ", response.json());
+			//console.log("response in json: ", response.json());
 			if (response.ok) {
 				props.fetchTasks();
 				props.createToggle();

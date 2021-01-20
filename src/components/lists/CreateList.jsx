@@ -19,7 +19,7 @@ function CreateList(props) {
 			body: JSON.stringify({ list: { title: newListName } }),
 		}).then((response) => {
 			if (response.ok === true) {
-				console.log("list created!");
+				//console//.log("list created!");
 				props.listFetch();
 				props.toggleNewListModal();
 			} else {

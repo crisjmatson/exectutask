@@ -85,7 +85,7 @@ const Auth = (props) => {
 		})
 			.then((response) => response.json())
 			.then((json) => {
-				console.log(json.sessionToken);
+				//console.log(json.sessionToken);
 				props.setSessionToken(json.sessionToken);
 			});
 	};
